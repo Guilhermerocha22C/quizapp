@@ -15,11 +15,15 @@ botoesAssunto.forEach(botao => {
 })
 
 function selecionarAssunto(evento) {
-    const classeBotao = evento.target.className
-    const assunto = document.querySelector(`.${classeBotao} span`).innerText
-    localStorage.setItem("assunto", assunto)
-    window.location.href = "./pages/quiz/quiz.html"
-}
+    const botao = evento.currentTarget;
+    const span = botao.querySelector("span");
+    if (span) {
+        const assunto = span.innerText;
+        localStorage.setItem("assunto", assunto);
+        window.location.href = "./pages/quiz/quiz.html";
+    } else {
+        console.error("Elemento span não encontrado no botão.");
+    }
 
 
 
